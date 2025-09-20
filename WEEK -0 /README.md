@@ -15,10 +15,7 @@ This repository is a my week-by-week log of my progress and learnings in the VSD
 - **RAM**: 6 GB  
 - **Storage**: 50 GB HDD (free space)  
 - **CPU**: 4 vCPU
-### Iverilog 
-```sudo apt-get update
-sudo apt-get install iverilog
-```
+
 ### Yosys 
 ``` $ sudo apt-get update
 $ git clone https://github.com/YosysHQ/yosys.git
@@ -41,3 +38,14 @@ sudo apt-get install iverilog
 $ sudo apt-get update
 $ sudo apt install gtkwave
 ```
+<img width="903" height="400" alt="Screenshot from 2025-09-20 09-58-36" src="https://github.com/user-attachments/assets/5a4d61e6-cd27-4207-8a8a-27ab6360e7fc" />
+
+### GTKWAVE
+```
+$ sudo apt update
+$ sudo apt install 
+```
+<img width="737" height="135" alt="Screenshot from 2025-09-20 10-00-16" src="https://github.com/user-attachments/assets/9a6378ca-35ba-4f1a-9924-fe099a96b3e8" />
+
+<img width="996" height="422" alt="Screenshot from 2025-09-20 09-49-36" src="https://github.com/user-attachments/assets/88c2969c-e350-4d66-96e3-a683c476b935" />
+
