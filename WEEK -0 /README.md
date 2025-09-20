@@ -35,12 +35,11 @@ udo make install'
 ### Iverilog 
 ```
 sudo apt-get update
-sudo apt-get install iverilog 
-### gtkwave
-$ sudo apt-get update
-$ sudo apt install gtkwave
+sudo apt-get update
+sudo apt-get install iverilog
 ```
 <img width="903" height="400" alt="Screenshot from 2025-09-20 09-58-36" src="https://github.com/user-attachments/assets/5a4d61e6-cd27-4207-8a8a-27ab6360e7fc" />
+
 
 ### GTKWAVE
 ```
