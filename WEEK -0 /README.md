@@ -30,6 +30,8 @@ $ make
 $ s<img width="1920" height="1080" alt="Sign up in app" src="https://github.com/user-attachments/assets/acaa067c-6499-464f-828e-00097ab973b3" />
 udo make install'
 ```
+<img width="946" height="681" alt="Screenshot from 2025-09-20 11-57-53" src="https://github.com/user-attachments/assets/3d06b02a-cf5d-4467-874c-ded7d1d1bb6e" />
+
 ### Iverilog 
 ```
 sudo apt-get update
