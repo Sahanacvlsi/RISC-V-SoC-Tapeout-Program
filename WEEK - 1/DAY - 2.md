@@ -52,4 +52,7 @@ synth -top dff_asyncres
 dfflibmap -liberty sky130_fd_sc_hd__tt_025C_1v80.lib
 abc -liberty sky130_fd_sc_hd__tt_025C_1v80.lib
 show
+```
+## Summary
 
+Day 2 was a big learning curve! I got comfortable with the SKY130 PDK timing libraries, different synthesis flows, and writing solid flip-flop RTL. Simulation and synthesis workflows are becoming clearer. Excited to keep building on this
