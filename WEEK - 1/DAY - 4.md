@@ -1,4 +1,4 @@
-# SKY130 RTL Design — Day 4: Gate-Level Simulation, Verilog Assignment Styles & Mismatches 🔍⚙️
+# SKY130 RTL Design — Day 4: Gate-Level Simulation, Verilog Assignment Styles & Mismatches 
 
 Welcome to **Day 4** of my RTL Design & Synthesis journey with the **SKY130 PDK**!
 
@@ -109,10 +109,22 @@ end
 ```
 ## Lab 5: GLS of Bad MUX
 
-Simulated the synthesized bad_mux.
-⚠️ Result: Mismatches and unexpected glitches.
+Simulated the synthesized bad_mux.'
+```
+// bad_mux.v
+module bad_mux (input i0, input i1, input sel, output reg y);
+  always @ (sel) begin
+    if (sel)
+      y <= i1;
+    else 
+      y <= i0;
+  end
+endmodule
+```
 
-💡 Lesson: Code style matters in hardware!
+**Result:** Mismatches and unexpected glitches.
+
+**Lesson:** Code style matters in hardware!
 ## Lab 6: Blocking Assignment Caveat
 ```
 module blocking_caveat (input a, input b, input c, output reg d);
@@ -123,9 +135,9 @@ module blocking_caveat (input a, input b, input c, output reg d);
   end
 endmodule
 ```
-🔁 Problem: d is computed before x is updated.
+**Problem: **d is computed before x is updated.
 
-✅ Fix:
+**Fix:**
 ```
 always @(*) begin
   x = a | b;
@@ -133,6 +145,29 @@ always @(*) begin
 end
 ```
 ## Lab 7: Synthesis of Blocking Caveat (Corrected)
+```
+// fixed_blocking_caveat.v
+module blocking_caveat (input a, input b, input c, output reg d);
+  reg x;
+  always @(*) begin
+    x = a | b;    // assign intermediate variable first
+    d = x & c;    // then use it
+  end
+endmodule
 
+```
 Used Yosys to synthesize the corrected logic.
-🧠 Confirmed: Logical correctness + optimal gate mapping.
+Confirmed: Logical correctness + optimal gate mapping.
+
+### Summary
+- Topic	📝 Description🔎 GLS	Simulating the gate-level netlist to verify post-synthesis correctness
+- Mismatches	Arise from ambiguous or incorrect RTL
+- Blocking vs Non-Blocking	Use = for combo, <= for sequential
+- Labs	7 Labs covering good/bad RTL, GLS, synthesis and coding practices
+✅ Gate-Level Simulation is your safety net before heading to layout!
+
+### Tools Used:
+
+- Yosys (for synthesis)
+- Icarus Verilog (for RTL + GLS simulation)
+- GTKWave (for waveform visualization)
