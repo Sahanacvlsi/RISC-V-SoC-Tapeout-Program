@@ -54,17 +54,21 @@ This basic example solidifies understanding of combinational logic and sensitivi
 # Clone the example repository with design and testbench
 git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git
 cd sky130RTLDesignAndSynthesisWorkshop/verilog_files
-
+```
+```
 # Install required tools
 sudo apt install iverilog gtkwave
-
+```
+```
 # Compile and simulate the mux
 iverilog good_mux.v tb_good_mux.v
 ./a.out
-
+```
+```
 # View the waveform
 gtkwave tb_good_mux.vcd
-
+```
+```
 # Launch Yosys for synthesis
 yosys
 
