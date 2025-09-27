@@ -23,8 +23,8 @@ iverilog -o simv labs/fa.v labs/lab12_rca.v && vvp simv
 3. For synthesis, run your FPGA tool (Vivado/Quartus/others). Use the `docs/day5-notes.md` for synthesis tips.
 
 ---
-
-## Files (copy-paste ready)
+# LAB 
+## Files (code used for lab)
 
 ### labs/lab01_incomp_if.v
 
