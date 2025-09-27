@@ -1,33 +1,33 @@
-# SKY130 PDK & RTL Design — Day 3: Combinational and Sequential Optimization ⚡️
+# SKY130 PDK & RTL Design — Day 3: Combinational and Sequential Optimization 
 
 Welcome to **Day 3** of my RTL Design and Synthesis journey using the SKY130 PDK!  
 Today was focused on **design optimization techniques** for both combinational and sequential logic. I explored how synthesis tools like Yosys can enhance circuit efficiency using methods like constant propagation, state optimization, cloning, and retiming.
 
 ---
 
-## 🧠 Topics Covered
+## Topics Covered
 
-### 1️⃣ Constant Propagation
+### 1️ Constant Propagation
 An optimization where constant values are propagated throughout the design. This simplifies logic, reduces gate count, and improves speed.
 
 **Example Behavior:**
 If `a = 0`, and we have `assign y = a ? b : 0;`, then `y = 0` regardless of `b`.  
 → This lets the tool optimize the logic away.
 
-### 2️⃣ State Optimization
+### 2️ State Optimization
 Used in FSMs (Finite State Machines). Involves:
 - **State Reduction**: Merging equivalent states.
 - **Encoding Optimization**: Choosing efficient binary values.
 - **Power Optimization**: Gating logic when idle.
 
-### 3️⃣ Cloning
+### 3️ Cloning
 Cloning duplicates certain logic elements to:
 - Reduce load
 - Improve timing
 - Balance paths
 Common in datapaths or fan-out-heavy designs.
 
-### 4️⃣ Retiming
+### 4️ Retiming
 A sequential optimization where registers are moved across logic boundaries to improve:
 - Critical path timing
 - Clock period
@@ -38,7 +38,7 @@ Retiming keeps **functionality same** while improving performance.
 
 ## Lab Work: Optimization in Action
 
-### 💡 Lab 1 — Constant Propagation Basic
+###  Lab 1 — Constant Propagation Basic
 
 **File**: `opt_check.v`
 ```verilog
@@ -49,7 +49,7 @@ endmodule
 🔍 What it does:
 If a = 0, y = 0 always. Tool should optimize logic accordingly.
 
-### 💡 Lab 2 — Constant as Output
+###  Lab 2 — Constant as Output
 
 File: opt_check2.v
 ```
@@ -57,14 +57,14 @@ Module opt_check2 (input a , input b , output y);
 	assign y = a ? 1 : b;
 endmodule
 ```
-🔍 What it does:
+ What it does:
 
     y = 1 when a = 1
 
     y = b when a = 0
 
 Acts like a mux but includes a constant input.
-### 💡 Lab 3 — Same as Lab 2 (Reviewed for Optimization Patterns)
+###  Lab 3 — Same as Lab 2 (Reviewed for Optimization Patterns)
 
 Functionality Recap:
 Another mux-like pattern:
@@ -72,7 +72,7 @@ Another mux-like pattern:
 assign y = a ? 1 : b;
 
 Observed how synthesis tools handle repeated constant patterns.
-💡 Lab 4 — Nested Ternary Expression
+### Lab 4 — Nested Ternary Expression
 
 File: opt_check4.v
 ```
@@ -80,13 +80,13 @@ module opt_check4 (input a , input b , input c , output y);
 	assign y = a ? (b ? (a & c) : c) : (!c);
 endmodule
 ```
-🔍 Simplified Logic:
+Simplified Logic:
 After analyzing the logic, it reduces to:
 
 assign y = a ? c : !c;
 
 Shows how powerful logic reduction can simplify nested conditions.
-### 💡 Lab 5 — Flip-Flop with Constant 1
+###  Lab 5 — Flip-Flop with Constant 1
 
 File: dff_const1.v
 ```
@@ -100,14 +100,14 @@ begin
 end
 endmodule
 ```
-🔍 What it does:
+ What it does:
 
     Asynchronous reset sets q = 0
 
     Otherwise, always loads 1
 
-🧠 Insight: This register always ends up as 1, so tool may optimize away FF logic depending on usage.
-### 💡 Lab 6 — Flip-Flop with Fixed Output
+Insight: This register always ends up as 1, so tool may optimize away FF logic depending on usage.
+### Lab 6 — Flip-Flop with Fixed Output
 
 File: dff_const2.v
 ```
@@ -118,12 +118,12 @@ begin
 end
 endmodule
 ```
-🔍 What it does:
+ What it does:
 
     Regardless of input/reset/clock, q is always 1.
 
-## 🧠 Tool behavior: Should recognize this as a constant output → can remove FF in synthesis.
-**🛠️ Synthesis Flow Used**
+##  Tool behavior: Should recognize this as a constant output → can remove FF in synthesis.
+** Synthesis Flow Used**
 
 For each design, I followed this synthesis flow in Yosys:
 
