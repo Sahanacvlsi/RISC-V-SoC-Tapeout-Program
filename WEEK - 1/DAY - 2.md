@@ -38,12 +38,14 @@ This repo contains my notes, code, and insights from Day 2 of my RISC-V-SoC-Tape
 ```bash
 # Open timing library
 gedit sky130_fd_sc_hd__tt_025C_1v80.lib
-
+```
+```
 # Simulation
 iverilog dff_asyncres.v tb_dff_asyncres.v
 ./a.out
 gtkwave tb_dff_asyncres.vcd
-
+```
+```
 # Yosys synthesis
 yosys
 read_liberty -lib sky130_fd_sc_hd__tt_025C_1v80.lib
